@@ -1102,7 +1102,7 @@ def render_comparison(candidates: list[dict]) -> str:
   <div class="wrap">
     <header>
       <h1>Srovnání skříní pro Nelu</h1>
-      <p class="lead">Porovnání zahrnuje referenční variantu z <code>nela_kandidat1</code> a dalších 10 podobných kandidátů. Filtr: šířka 70-95 cm, výška 160-185 cm, hloubka 40-55 cm, zrcadlo, šuplíky. Bílé nebo částečně bílé provedení je plus.</p>
+      <p class="lead">Porovnání zahrnuje referenční variantu z <code>nela_kandidat1</code> a dalších 10 podobných kandidátů. Filtr: šířka 70-95 cm, výška 160-185 cm, hloubka 40-55 cm, zrcadlo, šuplíky. Bílé nebo částečně bílé provedení je plus. Prostorový limit v rohu: max 193x80 cm.</p>
       <div class="stats">
         <div class="stat"><span>Celkem variant</span><strong>{len(candidates)}</strong></div>
         <div class="stat"><span>Bílé jako výhoda</span><strong>{white_count}</strong></div>
