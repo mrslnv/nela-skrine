@@ -498,6 +498,7 @@ def render_family_presentation(candidates: list[dict]) -> str:
                 <p class="hero-card__meta">Barva: {html_escape(candidate.get('color') or 'neuvedena')}</p>
                 <p class="hero-card__meta">Dostupnost: {html_escape(candidate.get('availability') or 'neuvedena')}</p>
                 <div class="badges">{render_badges(candidate)}</div>
+                <p class="card-link-wrap"><a class="card-link" href="{html_escape(candidate['source_url'])}" target="_blank" rel="noreferrer">Otevřít původní produkt</a></p>
                 {warning_html}
               </div>
             </article>
@@ -515,6 +516,7 @@ def render_family_presentation(candidates: list[dict]) -> str:
                 <h4>{html_escape(candidate['name'])}</h4>
                 <p>{html_escape(format_price(candidate.get('price_czk')))} | {candidate['dimensions_cm'].get('width')} × {candidate['dimensions_cm'].get('height')} × {candidate['dimensions_cm'].get('depth')} cm</p>
                 <div class="badges">{render_badges(candidate)}</div>
+                <p class="mini-card__link-wrap"><a class="mini-card__link" href="{html_escape(candidate['source_url'])}" target="_blank" rel="noreferrer">Detail a všechny obrázky</a></p>
                 <p class="mini-card__warning">{html_escape(' | '.join(warnings) if warnings else 'Bez zvláštní poznámky')}</p>
               </div>
             </article>
@@ -527,7 +529,7 @@ def render_family_presentation(candidates: list[dict]) -> str:
         discussion_rows.append(
             f"""
             <tr>
-              <td>{html_escape(candidate['name'])}</td>
+              <td>{html_escape(candidate['name'])}<br><a class="table-link" href="{html_escape(candidate['source_url'])}" target="_blank" rel="noreferrer">Otevřít originál</a></td>
               <td>{html_escape(format_price(candidate.get('price_czk')))}</td>
               <td>{dims.get('depth')} cm</td>
               <td>{html_escape(candidate.get('color') or '')}</td>
@@ -673,6 +675,24 @@ def render_family_presentation(candidates: list[dict]) -> str:
       background: #fff1e6;
       color: #7d4a1f;
       font-size: 0.92rem;
+    }}
+    .card-link-wrap,
+    .mini-card__link-wrap {{
+      margin: 12px 0 0;
+    }}
+    .card-link,
+    .mini-card__link,
+    .table-link {{
+      display: inline-block;
+      color: var(--accent-dark);
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(126, 57, 32, 0.35);
+    }}
+    .card-link:hover,
+    .mini-card__link:hover,
+    .table-link:hover {{
+      border-bottom-color: var(--accent-dark);
     }}
     .badges {{
       display: flex;
