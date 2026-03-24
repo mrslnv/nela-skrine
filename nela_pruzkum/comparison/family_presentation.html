@@ -1,0 +1,640 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rodinné srovnání skříní pro Nelu</title>
+  <style>
+    :root {
+      --bg: #f7f2ea;
+      --paper: #fffdf8;
+      --ink: #211c18;
+      --muted: #6b6257;
+      --line: #dccdb8;
+      --accent: #b85c38;
+      --accent-dark: #7e3920;
+      --soft: #f0e0d2;
+      --green: #3a6d57;
+      --green-soft: #dce9e2;
+      --shadow: 0 18px 40px rgba(46, 32, 16, 0.10);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 15% 0%, rgba(184,92,56,0.18), transparent 25%),
+        radial-gradient(circle at 100% 20%, rgba(58,109,87,0.12), transparent 24%),
+        linear-gradient(180deg, #fcf8f1 0%, var(--bg) 100%);
+    }
+    .wrap { max-width: 1360px; margin: 0 auto; padding: 28px 18px 72px; }
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 18px;
+      align-items: stretch;
+      margin-bottom: 24px;
+    }
+    .hero-main, .hero-side {
+      background: rgba(255, 253, 248, 0.92);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: 24px;
+    }
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2.2rem, 5vw, 4.6rem);
+      line-height: 0.92;
+      letter-spacing: -0.05em;
+      font-family: Georgia, "Times New Roman", serif;
+    }
+    .hero-main p {
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-size: 1.08rem;
+      max-width: 820px;
+    }
+    .hero-notes {
+      display: grid;
+      gap: 12px;
+    }
+    .note {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 14px 16px;
+    }
+    .note strong {
+      display: block;
+      color: var(--accent-dark);
+      margin-bottom: 6px;
+    }
+    .section-title {
+      margin: 30px 0 14px;
+      font-size: 1.45rem;
+      letter-spacing: -0.03em;
+      font-family: Georgia, "Times New Roman", serif;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+    .hero-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .hero-card__image-wrap {
+      position: relative;
+      background: linear-gradient(180deg, #efe3d1, #f8f2e8);
+    }
+    .hero-card__image-wrap img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      display: block;
+    }
+    .hero-card__label {
+      position: absolute;
+      left: 14px;
+      top: 14px;
+      background: rgba(33, 28, 24, 0.88);
+      color: #fff;
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 0.84rem;
+      letter-spacing: 0.04em;
+    }
+    .hero-card__body { padding: 16px; }
+    .hero-card h3 {
+      margin: 0 0 8px;
+      font-size: 1.15rem;
+      line-height: 1.15;
+    }
+    .hero-card__reason, .hero-card__meta {
+      margin: 0 0 8px;
+      color: var(--muted);
+    }
+    .hero-card__price {
+      margin: 0 0 10px;
+      color: var(--accent-dark);
+      font-size: 1.55rem;
+      font-weight: 800;
+    }
+    .card-warning {
+      margin: 12px 0 0;
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: #fff1e6;
+      color: #7d4a1f;
+      font-size: 0.92rem;
+    }
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .badge {
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 0.83rem;
+      border: 1px solid var(--line);
+      background: var(--soft);
+    }
+    .badge--white {
+      background: #fff;
+      border-color: #d6d6d6;
+    }
+    .badge--avail {
+      background: var(--green-soft);
+      border-color: #b7d4c7;
+    }
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px;
+    }
+    .mini-card {
+      display: grid;
+      grid-template-columns: 112px 1fr;
+      gap: 12px;
+      align-items: stretch;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .mini-card img {
+      width: 100%;
+      height: 100%;
+      min-height: 112px;
+      object-fit: cover;
+      background: #efe3d1;
+    }
+    .mini-card__body {
+      padding: 12px 12px 12px 0;
+    }
+    .mini-card h4 {
+      margin: 0 0 6px;
+      font-size: 1rem;
+      line-height: 1.1;
+    }
+    .mini-card p {
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+    .mini-card__warning {
+      color: var(--accent-dark) !important;
+      font-size: 0.88rem !important;
+    }
+    .talk-box {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+    }
+    .talk-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 16px;
+      box-shadow: var(--shadow);
+    }
+    .talk-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--accent-dark);
+    }
+    .table-wrap {
+      overflow: auto;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      background: var(--paper);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 880px;
+    }
+    th, td {
+      padding: 12px 10px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: #efe1cf;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+    .foot {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+    @media (max-width: 980px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media (max-width: 720px) {
+      .wrap { padding: 16px 12px 40px; }
+      .hero-main, .hero-side { padding: 18px; border-radius: 22px; }
+      .mini-card { grid-template-columns: 1fr; }
+      .mini-card__body { padding: 0 12px 12px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <div class="hero-main">
+        <h1>Skříně pro Nelu</h1>
+        <p>Tohle je verze srovnání připravená pro společnou debatu doma. Neřeší jen technická data, ale hlavně to, co je důležité při rozhodování: cena, hloubka, barva, dostupnost a jestli je varianta opravdu blízko původnímu favoritu.</p>
+        <p>Ve všech variantách jsem držel filtr: šířka 70-95 cm, výška 160-185 cm, hloubka 40-55 cm, zrcadlo a šuplíky. Bílá nebo částečně bílá varianta je plus.</p>
+      </div>
+      <div class="hero-side">
+        <div class="hero-notes">
+          <div class="note">
+            <strong>Co řešit jako první</strong>
+            Má být priorita cena, čistě bílý vzhled, nebo co nejmenší hloubka?
+          </div>
+          <div class="note">
+            <strong>Co vychází z dat</strong>
+            Většina kandidátů má hloubku 50 až 51 cm. Rozdíly jsou hlavně v dekoru, ceně a dostupnosti.
+          </div>
+          <div class="note">
+            <strong>Na co pozor</strong>
+            U některých variant se rozchází hloubka mezi tabulkou a popisem, případně jsou na stránce dvě různé ceny.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <h2 class="section-title">Rychlí favoriti pro diskuzi</h2>
+    <section class="hero-grid">
+      
+            <article class="hero-card">
+              <div class="hero-card__image-wrap">
+                <img src="assets/reference_main.webp" alt="Šatní skříň s otočnými dveřmi a zrcadlem 90 cm bílá">
+                <span class="hero-card__label">Referenční kus</span>
+              </div>
+              <div class="hero-card__body">
+                <h3>Šatní skříň s otočnými dveřmi a zrcadlem 90 cm bílá</h3>
+                <p class="hero-card__reason">Tohle je původní favorit, ke kterému všechno vztahujeme.</p>
+                <p class="hero-card__price">11 250 Kč</p>
+                <p class="hero-card__meta">Rozměry: 90 × 180 × 50 cm</p>
+                <p class="hero-card__meta">Barva: Bílá</p>
+                <p class="hero-card__meta">Dostupnost: Na cestě od dodavatele</p>
+                <div class="badges"><span class="badge badge--white">Bílá jako plus</span><span class="badge badge--price">11 250 Kč</span><span class="badge badge--depth">Hloubka 50 cm</span><span class="badge badge--color">Bílá</span><span class="badge badge--avail">Na cestě od dodavatele</span></div>
+                <p class="card-warning"><strong>Pozor:</strong> Textový popis uvádí 51 cm. | Hloubka se na stránce liší: tabulka parametrů uvádí 50 cm, textový popis 51 cm.</p>
+              </div>
+            </article>
+            
+            <article class="hero-card">
+              <div class="hero-card__image-wrap">
+                <img src="https://www.nabytek-market.cz/images/eshop/product/CN-05-/satni-skrin-ss-90-zrcadlo-bila-0176-01_8097_66320.jpg" alt="Šatní skříň SS-90 zrcadlo Bílá">
+                <span class="hero-card__label">Cenový favorit</span>
+              </div>
+              <div class="hero-card__body">
+                <h3>Šatní skříň SS-90 zrcadlo Bílá</h3>
+                <p class="hero-card__reason">Nejnižší cena z celého přehledu.</p>
+                <p class="hero-card__price">5 539 Kč</p>
+                <p class="hero-card__meta">Rozměry: 90 × 180 × 50 cm</p>
+                <p class="hero-card__meta">Barva: Bílá</p>
+                <p class="hero-card__meta">Dostupnost: 1-2 týdny</p>
+                <div class="badges"><span class="badge badge--white">Bílá jako plus</span><span class="badge badge--price">5 539 Kč</span><span class="badge badge--depth">Hloubka 50 cm</span><span class="badge badge--color">Bílá</span><span class="badge badge--avail">1-2 týdny</span></div>
+                <p class="card-warning"><strong>Pozor:</strong> Stránka zároveň uvádí status &#x27;Rychlé dodání&#x27;.</p>
+              </div>
+            </article>
+            
+            <article class="hero-card">
+              <div class="hero-card__image-wrap">
+                <img src="https://www.nabytek-market.cz/images/eshop/product/CN-05-/satni-skrin-ss-90-zrcadlo-bila-0176-01_8097_66320.jpg" alt="Šatní skříň SS-90 zrcadlo Bílá">
+                <span class="hero-card__label">Bílá za rozumnou cenu</span>
+              </div>
+              <div class="hero-card__body">
+                <h3>Šatní skříň SS-90 zrcadlo Bílá</h3>
+                <p class="hero-card__reason">Bílé provedení a přitom stále nízká cena.</p>
+                <p class="hero-card__price">5 539 Kč</p>
+                <p class="hero-card__meta">Rozměry: 90 × 180 × 50 cm</p>
+                <p class="hero-card__meta">Barva: Bílá</p>
+                <p class="hero-card__meta">Dostupnost: 1-2 týdny</p>
+                <div class="badges"><span class="badge badge--white">Bílá jako plus</span><span class="badge badge--price">5 539 Kč</span><span class="badge badge--depth">Hloubka 50 cm</span><span class="badge badge--color">Bílá</span><span class="badge badge--avail">1-2 týdny</span></div>
+                <p class="card-warning"><strong>Pozor:</strong> Stránka zároveň uvádí status &#x27;Rychlé dodání&#x27;.</p>
+              </div>
+            </article>
+            
+            <article class="hero-card">
+              <div class="hero-card__image-wrap">
+                <img src="https://www.nabytek-market.cz/images/eshop/product/CN-05-/satni-skrin-ss-90-zrcadlo-bila-0176-01_8097_66320.jpg" alt="Šatní skříň SS-90 zrcadlo Bílá">
+                <span class="hero-card__label">Nejbližší původní volbě</span>
+              </div>
+              <div class="hero-card__body">
+                <h3>Šatní skříň SS-90 zrcadlo Bílá</h3>
+                <p class="hero-card__reason">Rozměrově i typově nejblíž prvnímu kandidátovi.</p>
+                <p class="hero-card__price">5 539 Kč</p>
+                <p class="hero-card__meta">Rozměry: 90 × 180 × 50 cm</p>
+                <p class="hero-card__meta">Barva: Bílá</p>
+                <p class="hero-card__meta">Dostupnost: 1-2 týdny</p>
+                <div class="badges"><span class="badge badge--white">Bílá jako plus</span><span class="badge badge--price">5 539 Kč</span><span class="badge badge--depth">Hloubka 50 cm</span><span class="badge badge--color">Bílá</span><span class="badge badge--avail">1-2 týdny</span></div>
+                <p class="card-warning"><strong>Pozor:</strong> Stránka zároveň uvádí status &#x27;Rychlé dodání&#x27;.</p>
+              </div>
+            </article>
+            
+            <article class="hero-card">
+              <div class="hero-card__image-wrap">
+                <img src="https://www.sg-nabytek.cz/variant/eshop/motive-meta/edeeshop/product/hlavni-motiv/084-0934/szafa-s-90cm-2-drzwi-2-szuflady-2-lustra-biala-wenge.jpg" alt="Šatní skříň se zrcadly S90 2 dvířka 2 zásuvky bílá/wenge">
+                <span class="hero-card__label">Nejrychlejší varianta</span>
+              </div>
+              <div class="hero-card__body">
+                <h3>Šatní skříň se zrcadly S90 2 dvířka 2 zásuvky bílá/wenge</h3>
+                <p class="hero-card__reason">Nejlépe vychází dostupnost, pokud chcete řešit nákup brzy.</p>
+                <p class="hero-card__price">5 989 Kč</p>
+                <p class="hero-card__meta">Rozměry: 90 × 180 × 51 cm</p>
+                <p class="hero-card__meta">Barva: bílá/wenge</p>
+                <p class="hero-card__meta">Dostupnost: Obvykle skladem</p>
+                <div class="badges"><span class="badge badge--white">Bílá jako plus</span><span class="badge badge--price">5 989 Kč</span><span class="badge badge--depth">Hloubka 51 cm</span><span class="badge badge--color">bílá/wenge</span><span class="badge badge--avail">Obvykle skladem</span></div>
+                <p class="card-warning"><strong>Pozor:</strong> Doručíme do 3. 4. 2026</p>
+              </div>
+            </article>
+            
+    </section>
+
+    <h2 class="section-title">Otázky k debatě</h2>
+    <section class="talk-box">
+      <div class="talk-card">
+        <strong>1. Která vypadá nejlíp?</strong>
+        Nela asi bude řešit hlavně dekor a jak působí zrcadlo na přední straně.
+      </div>
+      <div class="talk-card">
+        <strong>2. Je 50 až 51 cm hloubka v pokoji v pohodě?</strong>
+        Tohle je prakticky nejdůležitější rozměr pro prostor před skříní.
+      </div>
+      <div class="talk-card">
+        <strong>3. Chcete čistě bílou, nebo stačí kombinace?</strong>
+        Bílé varianty jsou vizuálně lehčí, ale některé kombinace jsou levnější nebo zajímavější.
+      </div>
+      <div class="talk-card">
+        <strong>4. Má hrát roli rychlost dodání?</strong>
+        Některé varianty vypadají dostupnější než původní reference.
+      </div>
+    </section>
+
+    <h2 class="section-title">Všechny varianty na jedné obrazovce</h2>
+    <section class="mini-grid">
+      
+            <article class="mini-card">
+              <img src="https://www.nabytek-market.cz/images/eshop/product/CN-05-/satni-skrin-ss-90-zrcadlo-bila-0176-01_8097_66320.jpg" alt="Šatní skříň SS-90 zrcadlo Bílá">
+              <div class="mini-card__body">
+                <h4>Šatní skříň SS-90 zrcadlo Bílá</h4>
+                <p>5 539 Kč | 90 × 180 × 50 cm</p>
+                <div class="badges"><span class="badge badge--white">Bílá jako plus</span><span class="badge badge--price">5 539 Kč</span><span class="badge badge--depth">Hloubka 50 cm</span><span class="badge badge--color">Bílá</span><span class="badge badge--avail">1-2 týdny</span></div>
+                <p class="mini-card__warning">Stránka zároveň uvádí status &#x27;Rychlé dodání&#x27;.</p>
+              </div>
+            </article>
+            
+            <article class="mini-card">
+              <img src="assets/reference_main.webp" alt="Šatní skříň s otočnými dveřmi a zrcadlem 90 cm bílá">
+              <div class="mini-card__body">
+                <h4>Šatní skříň s otočnými dveřmi a zrcadlem 90 cm bílá</h4>
+                <p>11 250 Kč | 90 × 180 × 50 cm</p>
+                <div class="badges"><span class="badge badge--white">Bílá jako plus</span><span class="badge badge--price">11 250 Kč</span><span class="badge badge--depth">Hloubka 50 cm</span><span class="badge badge--color">Bílá</span><span class="badge badge--avail">Na cestě od dodavatele</span></div>
+                <p class="mini-card__warning">Textový popis uvádí 51 cm. | Hloubka se na stránce liší: tabulka parametrů uvádí 50 cm, textový popis 51 cm.</p>
+              </div>
+            </article>
+            
+            <article class="mini-card">
+              <img src="https://www.sg-nabytek.cz/variant/eshop/motive-meta/edeeshop/product/hlavni-motiv/084-0934/szafa-s-90cm-2-drzwi-2-szuflady-2-lustra-biala-wenge.jpg" alt="Šatní skříň se zrcadly S90 2 dvířka 2 zásuvky bílá/wenge">
+              <div class="mini-card__body">
+                <h4>Šatní skříň se zrcadly S90 2 dvířka 2 zásuvky bílá/wenge</h4>
+                <p>5 989 Kč | 90 × 180 × 51 cm</p>
+                <div class="badges"><span class="badge badge--white">Bílá jako plus</span><span class="badge badge--price">5 989 Kč</span><span class="badge badge--depth">Hloubka 51 cm</span><span class="badge badge--color">bílá/wenge</span><span class="badge badge--avail">Obvykle skladem</span></div>
+                <p class="mini-card__warning">Doručíme do 3. 4. 2026</p>
+              </div>
+            </article>
+            
+            <article class="mini-card">
+              <img src="https://cdn.dobresny.cz/images/produkty/3/22351/export_8270.jpg?format=webp" alt="Šatní skříň s otočnými dveřmi a zrcadlem 90cm bílá / šedá">
+              <div class="mini-card__body">
+                <h4>Šatní skříň s otočnými dveřmi a zrcadlem 90cm bílá / šedá</h4>
+                <p>11 510 Kč | 90 × 180 × 50 cm</p>
+                <div class="badges"><span class="badge badge--white">Bílá jako plus</span><span class="badge badge--price">11 510 Kč</span><span class="badge badge--depth">Hloubka 50 cm</span><span class="badge badge--color">bílá/šedá</span><span class="badge badge--avail">Na cestě od dodavatele</span></div>
+                <p class="mini-card__warning">Textový popis uvádí 51 cm. | Hloubka se liší podle zdroje: tabulka 50 cm, text 51 cm.</p>
+              </div>
+            </article>
+            
+            <article class="mini-card">
+              <img src="https://cdn.dobresny.cz/images/produkty/3/22355/export_8288.jpg?format=webp" alt="Šatní skříň s otočnými dveřmi a zrcadlem 90cm dub artisan / bílá">
+              <div class="mini-card__body">
+                <h4>Šatní skříň s otočnými dveřmi a zrcadlem 90cm dub artisan / bílá</h4>
+                <p>11 510 Kč | 90 × 180 × 50 cm</p>
+                <div class="badges"><span class="badge badge--white">Bílá jako plus</span><span class="badge badge--price">11 510 Kč</span><span class="badge badge--depth">Hloubka 50 cm</span><span class="badge badge--color">dub artisan/bílá</span><span class="badge badge--avail">Na cestě od dodavatele</span></div>
+                <p class="mini-card__warning">Textový popis uvádí 51 cm. | Hloubka se liší podle zdroje: tabulka 50 cm, text 51 cm.</p>
+              </div>
+            </article>
+            
+            <article class="mini-card">
+              <img src="https://www.sg-nabytek.cz/variant/eshop/motive-meta/edeeshop/product/hlavni-motiv/084-0066/snimek-obrazovky-186.jpg" alt="Šatní skříň se zrcadly S90 2 dvířka 2 zásuvky bílá">
+              <div class="mini-card__body">
+                <h4>Šatní skříň se zrcadly S90 2 dvířka 2 zásuvky bílá</h4>
+                <p>6 129 Kč | 90 × 180 × 51 cm</p>
+                <div class="badges"><span class="badge badge--white">Bílá jako plus</span><span class="badge badge--price">6 129 Kč</span><span class="badge badge--depth">Hloubka 51 cm</span><span class="badge badge--color">bílá</span><span class="badge badge--avail">Obvykle skladem</span></div>
+                <p class="mini-card__warning">Doručíme do 3. 4. 2026</p>
+              </div>
+            </article>
+            
+            <article class="mini-card">
+              <img src="https://www.sg-nabytek.cz/variant/eshop/motive-meta/edeeshop/product/hlavni-motiv/084-0933/szafa-s-90cm-2-drzwi-2-szuflady-2-lustra-biala-sonoma.jpg" alt="Šatní skříň se zrcadly S90 2 dvířka 2 zásuvky bílá/dub sonoma">
+              <div class="mini-card__body">
+                <h4>Šatní skříň se zrcadly S90 2 dvířka 2 zásuvky bílá/dub sonoma</h4>
+                <p>6 229 Kč | 90 × 180 × 51 cm</p>
+                <div class="badges"><span class="badge badge--white">Bílá jako plus</span><span class="badge badge--price">6 229 Kč</span><span class="badge badge--depth">Hloubka 51 cm</span><span class="badge badge--color">bílá/dub sonoma</span><span class="badge badge--avail">Obvykle skladem</span></div>
+                <p class="mini-card__warning">Doručíme do 3. 4. 2026</p>
+              </div>
+            </article>
+            
+            <article class="mini-card">
+              <img src="https://www.salmax.cz/wp-content/uploads/2025/04/PRODUCT1-6661.jpg" alt="Šatní skříň SS-90 se zrcadlem - béžová">
+              <div class="mini-card__body">
+                <h4>Šatní skříň SS-90 se zrcadlem - béžová</h4>
+                <p>6 209 Kč | 90 × 180 × 50 cm</p>
+                <div class="badges"><span class="badge badge--price">6 209 Kč</span><span class="badge badge--depth">Hloubka 50 cm</span><span class="badge badge--color">Béžová</span><span class="badge badge--avail">Do 2 týdnů</span></div>
+                <p class="mini-card__warning">Na stránce jsou dvě ceny: nahoře 6209 Kč, v detailním výpisu 6479 Kč.</p>
+              </div>
+            </article>
+            
+            <article class="mini-card">
+              <img src="https://cdn.dobresny.cz/images/produkty/3/22354/export_8284.jpg?format=webp" alt="Šatní skříň s otočnými dveřmi a zrcadlem 90cm dub artisan">
+              <div class="mini-card__body">
+                <h4>Šatní skříň s otočnými dveřmi a zrcadlem 90cm dub artisan</h4>
+                <p>11 250 Kč | 90 × 180 × 50 cm</p>
+                <div class="badges"><span class="badge badge--price">11 250 Kč</span><span class="badge badge--depth">Hloubka 50 cm</span><span class="badge badge--color">Dub</span><span class="badge badge--avail">Na cestě od dodavatele</span></div>
+                <p class="mini-card__warning">Textový popis uvádí 51 cm. | Hloubka se liší podle zdroje: tabulka 50 cm, text 51 cm.</p>
+              </div>
+            </article>
+            
+            <article class="mini-card">
+              <img src="https://cdn.dobresny.cz/images/produkty/3/22290/export_7929.jpg?format=webp" alt="Šatní skříň s otočnými dveřmi a zrcadlem 90cm sonoma">
+              <div class="mini-card__body">
+                <h4>Šatní skříň s otočnými dveřmi a zrcadlem 90cm sonoma</h4>
+                <p>11 250 Kč | 90 × 180 × 50 cm</p>
+                <div class="badges"><span class="badge badge--price">11 250 Kč</span><span class="badge badge--depth">Hloubka 50 cm</span><span class="badge badge--color">Dub sonoma</span><span class="badge badge--avail">Na cestě od dodavatele</span></div>
+                <p class="mini-card__warning">Textový popis uvádí 51 cm. | Hloubka se liší podle zdroje: tabulka 50 cm, text 51 cm.</p>
+              </div>
+            </article>
+            
+            <article class="mini-card">
+              <img src="https://cdn.dobresny.cz/images/produkty/3/22331/export_8159.jpg?format=webp" alt="Šatní skříň s otočnými dveřmi a zrcadlem 90 cm wenge / sonoma">
+              <div class="mini-card__body">
+                <h4>Šatní skříň s otočnými dveřmi a zrcadlem 90 cm wenge / sonoma</h4>
+                <p>11 510 Kč | 90 × 180 × 51 cm</p>
+                <div class="badges"><span class="badge badge--price">11 510 Kč</span><span class="badge badge--depth">Hloubka 51 cm</span><span class="badge badge--color">wenge/dub sonoma</span><span class="badge badge--avail">Na cestě od dodavatele</span></div>
+                <p class="mini-card__warning">Bez zvláštní poznámky</p>
+              </div>
+            </article>
+            
+    </section>
+
+    <h2 class="section-title">Jednoduchá tabulka pro finální debatu</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Varianta</th>
+            <th>Cena</th>
+            <th>Hloubka</th>
+            <th>Barva</th>
+            <th>Bílá jako plus</th>
+            <th>Dostupnost</th>
+            <th>Poznámky</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              <td>Šatní skříň SS-90 zrcadlo Bílá</td>
+              <td>5 539 Kč</td>
+              <td>50 cm</td>
+              <td>Bílá</td>
+              <td>Ano</td>
+              <td>1-2 týdny</td>
+              <td>Stránka zároveň uvádí status &#x27;Rychlé dodání&#x27;.</td>
+            </tr>
+            
+            <tr>
+              <td>Šatní skříň s otočnými dveřmi a zrcadlem 90 cm bílá</td>
+              <td>11 250 Kč</td>
+              <td>50 cm</td>
+              <td>Bílá</td>
+              <td>Ano</td>
+              <td>Na cestě od dodavatele</td>
+              <td>Textový popis uvádí 51 cm. | Hloubka se na stránce liší: tabulka parametrů uvádí 50 cm, textový popis 51 cm.</td>
+            </tr>
+            
+            <tr>
+              <td>Šatní skříň se zrcadly S90 2 dvířka 2 zásuvky bílá/wenge</td>
+              <td>5 989 Kč</td>
+              <td>51 cm</td>
+              <td>bílá/wenge</td>
+              <td>Ano</td>
+              <td>Obvykle skladem</td>
+              <td>Doručíme do 3. 4. 2026</td>
+            </tr>
+            
+            <tr>
+              <td>Šatní skříň s otočnými dveřmi a zrcadlem 90cm bílá / šedá</td>
+              <td>11 510 Kč</td>
+              <td>50 cm</td>
+              <td>bílá/šedá</td>
+              <td>Ano</td>
+              <td>Na cestě od dodavatele</td>
+              <td>Textový popis uvádí 51 cm. | Hloubka se liší podle zdroje: tabulka 50 cm, text 51 cm.</td>
+            </tr>
+            
+            <tr>
+              <td>Šatní skříň s otočnými dveřmi a zrcadlem 90cm dub artisan / bílá</td>
+              <td>11 510 Kč</td>
+              <td>50 cm</td>
+              <td>dub artisan/bílá</td>
+              <td>Ano</td>
+              <td>Na cestě od dodavatele</td>
+              <td>Textový popis uvádí 51 cm. | Hloubka se liší podle zdroje: tabulka 50 cm, text 51 cm.</td>
+            </tr>
+            
+            <tr>
+              <td>Šatní skříň se zrcadly S90 2 dvířka 2 zásuvky bílá</td>
+              <td>6 129 Kč</td>
+              <td>51 cm</td>
+              <td>bílá</td>
+              <td>Ano</td>
+              <td>Obvykle skladem</td>
+              <td>Doručíme do 3. 4. 2026</td>
+            </tr>
+            
+            <tr>
+              <td>Šatní skříň se zrcadly S90 2 dvířka 2 zásuvky bílá/dub sonoma</td>
+              <td>6 229 Kč</td>
+              <td>51 cm</td>
+              <td>bílá/dub sonoma</td>
+              <td>Ano</td>
+              <td>Obvykle skladem</td>
+              <td>Doručíme do 3. 4. 2026</td>
+            </tr>
+            
+            <tr>
+              <td>Šatní skříň SS-90 se zrcadlem - béžová</td>
+              <td>6 209 Kč</td>
+              <td>50 cm</td>
+              <td>Béžová</td>
+              <td>Ne</td>
+              <td>Do 2 týdnů</td>
+              <td>Na stránce jsou dvě ceny: nahoře 6209 Kč, v detailním výpisu 6479 Kč.</td>
+            </tr>
+            
+            <tr>
+              <td>Šatní skříň s otočnými dveřmi a zrcadlem 90cm dub artisan</td>
+              <td>11 250 Kč</td>
+              <td>50 cm</td>
+              <td>Dub</td>
+              <td>Ne</td>
+              <td>Na cestě od dodavatele</td>
+              <td>Textový popis uvádí 51 cm. | Hloubka se liší podle zdroje: tabulka 50 cm, text 51 cm.</td>
+            </tr>
+            
+            <tr>
+              <td>Šatní skříň s otočnými dveřmi a zrcadlem 90cm sonoma</td>
+              <td>11 250 Kč</td>
+              <td>50 cm</td>
+              <td>Dub sonoma</td>
+              <td>Ne</td>
+              <td>Na cestě od dodavatele</td>
+              <td>Textový popis uvádí 51 cm. | Hloubka se liší podle zdroje: tabulka 50 cm, text 51 cm.</td>
+            </tr>
+            
+            <tr>
+              <td>Šatní skříň s otočnými dveřmi a zrcadlem 90 cm wenge / sonoma</td>
+              <td>11 510 Kč</td>
+              <td>51 cm</td>
+              <td>wenge/dub sonoma</td>
+              <td>Ne</td>
+              <td>Na cestě od dodavatele</td>
+              <td>Bez poznámky</td>
+            </tr>
+            
+        </tbody>
+      </table>
+    </div>
+    <p class="foot">Doporučení k dalšímu kroku: po společné debatě si z této stránky vyberte 2 až 3 kusy a teprve pak uděláme finální shortlistové srovnání, případně ověření dopravy, vrácení a detailních rozměrů.</p>
+  </div>
+</body>
+</html>

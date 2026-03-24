@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Srovnání skříní pro Nelu</title>
+  <style>
+    :root {
+      --bg: #f4efe6;
+      --panel: #fffaf2;
+      --ink: #20201c;
+      --muted: #6c675b;
+      --line: #d9cfbf;
+      --accent: #2f6d62;
+      --accent-soft: #dcebe7;
+      --warn: #8d5a2b;
+      --shadow: 0 10px 30px rgba(58, 46, 24, 0.08);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(47,109,98,0.12), transparent 28%),
+        radial-gradient(circle at top right, rgba(141,90,43,0.10), transparent 24%),
+        linear-gradient(180deg, #f8f3eb 0%, var(--bg) 100%);
+    }
+    .wrap { max-width: 1320px; margin: 0 auto; padding: 32px 20px 80px; }
+    header {
+      background: linear-gradient(135deg, rgba(255,250,242,0.95), rgba(244,239,230,0.95));
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      margin-bottom: 28px;
+    }
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+    }
+    .lead { margin: 0; color: var(--muted); max-width: 850px; font-size: 1.08rem; }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+      margin: 24px 0 0;
+    }
+    .stat {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 16px;
+    }
+    .stat strong { display: block; font-size: 1.6rem; }
+    .section-title {
+      margin: 34px 0 14px;
+      font-size: 1.35rem;
+      letter-spacing: -0.03em;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .card img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      display: block;
+      background: #ece5d8;
+    }
+    .card-body { padding: 16px; }
+    .tag {
+      display: inline-block;
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-soft);
+      border-radius: 999px;
+      padding: 4px 10px;
+      margin-bottom: 10px;
+    }
+    .card h2 {
+      font-size: 1.15rem;
+      line-height: 1.1;
+      margin: 0 0 8px;
+    }
+    .store, .meta, .notes {
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .price {
+      font-size: 1.35rem;
+      margin: 0 0 8px;
+      color: var(--accent);
+      font-weight: 700;
+    }
+    a { color: var(--accent); }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    th, td {
+      padding: 12px 10px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+      font-size: 0.95rem;
+    }
+    th {
+      background: #efe4d2;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+    .table-wrap { overflow: auto; border-radius: 20px; }
+    .footnote {
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+    @media (max-width: 720px) {
+      .wrap { padding: 18px 12px 40px; }
+      header { padding: 20px; border-radius: 18px; }
+      .card-body { padding: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>Srovnání skříní pro Nelu</h1>
+      <p class="lead">Porovnání zahrnuje referenční variantu z <code>nela_kandidat1</code> a dalších 10 podobných kandidátů. Filtr: šířka 70-95 cm, výška 160-185 cm, hloubka 40-55 cm, zrcadlo, šuplíky. Bílé nebo částečně bílé provedení je plus.</p>
+      <div class="stats">
+        <div class="stat"><span>Celkem variant</span><strong>11</strong></div>
+        <div class="stat"><span>Bílé jako výhoda</span><strong>7</strong></div>
+        <div class="stat"><span>Nejnižší cena</span><strong>5539 Kč</strong>k07_nabytek_market_bila</div>
+        <div class="stat"><span>Nejmenší hloubka</span><strong>50 cm</strong>k01_reference_dobresny_bila</div>
+      </div>
+    </header>
+
+    <h2 class="section-title">Karty kandidátů</h2>
+    <section class="cards">
+      
+        <article class="card">
+          <img src="https://www.nabytek-market.cz/images/eshop/product/CN-05-/satni-skrin-ss-90-zrcadlo-bila-0176-01_8097_66320.jpg" alt="Šatní skříň SS-90 zrcadlo Bílá">
+          <div class="card-body">
+            <div class="tag">k07_nabytek_market_bila</div>
+            <h2>Šatní skříň SS-90 zrcadlo Bílá</h2>
+            <p class="store">Nabytek-market.cz</p>
+            <p class="price">5539 Kč</p>
+            <p class="meta">Rozměry: 90 × 180 × 50 cm</p>
+            <p class="meta">Barva: Bílá</p>
+            <p class="meta">Dostupnost: 1-2 týdny</p>
+            <p class="notes">Stránka zároveň uvádí status &#x27;Rychlé dodání&#x27;.</p>
+            <p><a href="https://www.nabytek-market.cz/satni-skrin-ss-90-zrcadlo-bila-detail" target="_blank" rel="noreferrer">Otevřít produkt</a></p>
+          </div>
+        </article>
+        
+        <article class="card">
+          <img src="assets/reference_main.webp" alt="Šatní skříň s otočnými dveřmi a zrcadlem 90 cm bílá">
+          <div class="card-body">
+            <div class="tag">k01_reference_dobresny_bila</div>
+            <h2>Šatní skříň s otočnými dveřmi a zrcadlem 90 cm bílá</h2>
+            <p class="store">Dobrésny.cz</p>
+            <p class="price">11250 Kč</p>
+            <p class="meta">Rozměry: 90 × 180 × 50 cm</p>
+            <p class="meta">Barva: Bílá</p>
+            <p class="meta">Dostupnost: Na cestě od dodavatele</p>
+            <p class="notes">Hloubka se na stránce liší: tabulka parametrů uvádí 50 cm, textový popis 51 cm.</p>
+            <p><a href="https://www.dobresny.cz/detail/skrine/skrine-s-otocnymi-dvermi/satni-skrin-s-otocnymi-dvermi-a-zrcadlem-90-cm-bila.html" target="_blank" rel="noreferrer">Otevřít produkt</a></p>
+          </div>
+        </article>
+        
+        <article class="card">
+          <img src="https://cdn.dobresny.cz/images/produkty/3/22351/export_8270.jpg?format=webp" alt="Šatní skříň s otočnými dveřmi a zrcadlem 90cm bílá / šedá">
+          <div class="card-body">
+            <div class="tag">k02_dobresny_bila_seda</div>
+            <h2>Šatní skříň s otočnými dveřmi a zrcadlem 90cm bílá / šedá</h2>
+            <p class="store">Dobrésny.cz</p>
+            <p class="price">11510 Kč</p>
+            <p class="meta">Rozměry: 90 × 180 × 50 cm</p>
+            <p class="meta">Barva: bílá/šedá</p>
+            <p class="meta">Dostupnost: Na cestě od dodavatele</p>
+            <p class="notes">Hloubka se liší podle zdroje: tabulka 50 cm, text 51 cm.</p>
+            <p><a href="https://www.dobresny.cz/detail/skrine/skrine-s-otocnymi-dvermi/satni-skrin-s-otocnymi-dvermi-a-zrcadlem-90cm-bila-seda.html" target="_blank" rel="noreferrer">Otevřít produkt</a></p>
+          </div>
+        </article>
+        
+        <article class="card">
+          <img src="https://cdn.dobresny.cz/images/produkty/3/22355/export_8288.jpg?format=webp" alt="Šatní skříň s otočnými dveřmi a zrcadlem 90cm dub artisan / bílá">
+          <div class="card-body">
+            <div class="tag">k03_dobresny_dub_artisan_bila</div>
+            <h2>Šatní skříň s otočnými dveřmi a zrcadlem 90cm dub artisan / bílá</h2>
+            <p class="store">Dobrésny.cz</p>
+            <p class="price">11510 Kč</p>
+            <p class="meta">Rozměry: 90 × 180 × 50 cm</p>
+            <p class="meta">Barva: dub artisan/bílá</p>
+            <p class="meta">Dostupnost: Na cestě od dodavatele</p>
+            <p class="notes">Hloubka se liší podle zdroje: tabulka 50 cm, text 51 cm.</p>
+            <p><a href="https://www.dobresny.cz/detail/skrine/skrine-s-otocnymi-dvermi/satni-skrin-s-otocnymi-dvermi-a-zrcadlem-90cm-dub-artisan-bila.html" target="_blank" rel="noreferrer">Otevřít produkt</a></p>
+          </div>
+        </article>
+        
+        <article class="card">
+          <img src="https://www.sg-nabytek.cz/variant/eshop/motive-meta/edeeshop/product/hlavni-motiv/084-0934/szafa-s-90cm-2-drzwi-2-szuflady-2-lustra-biala-wenge.jpg" alt="Šatní skříň se zrcadly S90 2 dvířka 2 zásuvky bílá/wenge">
+          <div class="card-body">
+            <div class="tag">k11_sg_bila_wenge</div>
+            <h2>Šatní skříň se zrcadly S90 2 dvířka 2 zásuvky bílá/wenge</h2>
+            <p class="store">SG nábytek</p>
+            <p class="price">5989 Kč</p>
+            <p class="meta">Rozměry: 90 × 180 × 51 cm</p>
+            <p class="meta">Barva: bílá/wenge</p>
+            <p class="meta">Dostupnost: Obvykle skladem</p>
+            <p class="notes">Doručíme do 3. 4. 2026</p>
+            <p><a href="https://www.sg-nabytek.cz/cs/satni-skrin-se-zrcadly-s90-2-dvirka-2-zasuvky-bila-wenge" target="_blank" rel="noreferrer">Otevřít produkt</a></p>
+          </div>
+        </article>
+        
+        <article class="card">
+          <img src="https://www.sg-nabytek.cz/variant/eshop/motive-meta/edeeshop/product/hlavni-motiv/084-0066/snimek-obrazovky-186.jpg" alt="Šatní skříň se zrcadly S90 2 dvířka 2 zásuvky bílá">
+          <div class="card-body">
+            <div class="tag">k09_sg_bila</div>
+            <h2>Šatní skříň se zrcadly S90 2 dvířka 2 zásuvky bílá</h2>
+            <p class="store">SG nábytek</p>
+            <p class="price">6129 Kč</p>
+            <p class="meta">Rozměry: 90 × 180 × 51 cm</p>
+            <p class="meta">Barva: bílá</p>
+            <p class="meta">Dostupnost: Obvykle skladem</p>
+            <p class="notes">Doručíme do 3. 4. 2026</p>
+            <p><a href="https://www.sg-nabytek.cz/cs/satni-skrin-se-zrcadly-s90-2-dvirka-2-zasuvky-bila" target="_blank" rel="noreferrer">Otevřít produkt</a></p>
+          </div>
+        </article>
+        
+        <article class="card">
+          <img src="https://www.sg-nabytek.cz/variant/eshop/motive-meta/edeeshop/product/hlavni-motiv/084-0933/szafa-s-90cm-2-drzwi-2-szuflady-2-lustra-biala-sonoma.jpg" alt="Šatní skříň se zrcadly S90 2 dvířka 2 zásuvky bílá/dub sonoma">
+          <div class="card-body">
+            <div class="tag">k10_sg_bila_dub_sonoma</div>
+            <h2>Šatní skříň se zrcadly S90 2 dvířka 2 zásuvky bílá/dub sonoma</h2>
+            <p class="store">SG nábytek</p>
+            <p class="price">6229 Kč</p>
+            <p class="meta">Rozměry: 90 × 180 × 51 cm</p>
+            <p class="meta">Barva: bílá/dub sonoma</p>
+            <p class="meta">Dostupnost: Obvykle skladem</p>
+            <p class="notes">Doručíme do 3. 4. 2026</p>
+            <p><a href="https://www.sg-nabytek.cz/cs/satni-skrin-se-zrcadly-s90-2-dvirka-2-zasuvky-bila-dub-sonoma" target="_blank" rel="noreferrer">Otevřít produkt</a></p>
+          </div>
+        </article>
+        
+        <article class="card">
+          <img src="https://www.salmax.cz/wp-content/uploads/2025/04/PRODUCT1-6661.jpg" alt="Šatní skříň SS-90 se zrcadlem - béžová">
+          <div class="card-body">
+            <div class="tag">k08_salmax_bezova</div>
+            <h2>Šatní skříň SS-90 se zrcadlem - béžová</h2>
+            <p class="store">Salmax.cz</p>
+            <p class="price">6209 Kč</p>
+            <p class="meta">Rozměry: 90 × 180 × 50 cm</p>
+            <p class="meta">Barva: Béžová</p>
+            <p class="meta">Dostupnost: Do 2 týdnů</p>
+            <p class="notes">Na stránce jsou dvě ceny: nahoře 6209 Kč, v detailním výpisu 6479 Kč.</p>
+            <p><a href="https://www.salmax.cz/p/satni-skrin-ss-90-se-zrcadlem-bezova/" target="_blank" rel="noreferrer">Otevřít produkt</a></p>
+          </div>
+        </article>
+        
+        <article class="card">
+          <img src="https://cdn.dobresny.cz/images/produkty/3/22354/export_8284.jpg?format=webp" alt="Šatní skříň s otočnými dveřmi a zrcadlem 90cm dub artisan">
+          <div class="card-body">
+            <div class="tag">k04_dobresny_dub_artisan</div>
+            <h2>Šatní skříň s otočnými dveřmi a zrcadlem 90cm dub artisan</h2>
+            <p class="store">Dobrésny.cz</p>
+            <p class="price">11250 Kč</p>
+            <p class="meta">Rozměry: 90 × 180 × 50 cm</p>
+            <p class="meta">Barva: Dub</p>
+            <p class="meta">Dostupnost: Na cestě od dodavatele</p>
+            <p class="notes">Hloubka se liší podle zdroje: tabulka 50 cm, text 51 cm.</p>
+            <p><a href="https://www.dobresny.cz/detail/skrine/skrine-s-otocnymi-dvermi/satni-skrin-s-otocnymi-dvermi-a-zrcadlem-90cm-dub-artisan.html" target="_blank" rel="noreferrer">Otevřít produkt</a></p>
+          </div>
+        </article>
+        
+        <article class="card">
+          <img src="https://cdn.dobresny.cz/images/produkty/3/22290/export_7929.jpg?format=webp" alt="Šatní skříň s otočnými dveřmi a zrcadlem 90cm sonoma">
+          <div class="card-body">
+            <div class="tag">k05_dobresny_sonoma</div>
+            <h2>Šatní skříň s otočnými dveřmi a zrcadlem 90cm sonoma</h2>
+            <p class="store">Dobrésny.cz</p>
+            <p class="price">11250 Kč</p>
+            <p class="meta">Rozměry: 90 × 180 × 50 cm</p>
+            <p class="meta">Barva: Dub sonoma</p>
+            <p class="meta">Dostupnost: Na cestě od dodavatele</p>
+            <p class="notes">Hloubka se liší podle zdroje: tabulka 50 cm, text 51 cm.</p>
+            <p><a href="https://www.dobresny.cz/detail/skrine/skrine-s-otocnymi-dvermi/satni-skrin-s-otocnymi-dvermi-a-zrcadlem-90cm-sonoma.html" target="_blank" rel="noreferrer">Otevřít produkt</a></p>
+          </div>
+        </article>
+        
+        <article class="card">
+          <img src="https://cdn.dobresny.cz/images/produkty/3/22331/export_8159.jpg?format=webp" alt="Šatní skříň s otočnými dveřmi a zrcadlem 90 cm wenge / sonoma">
+          <div class="card-body">
+            <div class="tag">k06_dobresny_wenge_sonoma</div>
+            <h2>Šatní skříň s otočnými dveřmi a zrcadlem 90 cm wenge / sonoma</h2>
+            <p class="store">Dobrésny.cz</p>
+            <p class="price">11510 Kč</p>
+            <p class="meta">Rozměry: 90 × 180 × 51 cm</p>
+            <p class="meta">Barva: wenge/dub sonoma</p>
+            <p class="meta">Dostupnost: Na cestě od dodavatele</p>
+            <p class="notes">Bez poznámky</p>
+            <p><a href="https://www.dobresny.cz/detail/skrine/skrine-s-otocnymi-dvermi/satni-skrin-s-otocnymi-dvermi-a-zrcadlem-90-cm-wenge-sonoma.html" target="_blank" rel="noreferrer">Otevřít produkt</a></p>
+          </div>
+        </article>
+        
+    </section>
+
+    <h2 class="section-title">Tabulkové srovnání</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Název</th>
+            <th>Obchod</th>
+            <th>Cena</th>
+            <th>Šířka</th>
+            <th>Výška</th>
+            <th>Hloubka</th>
+            <th>Barva</th>
+            <th>Zrcadlo</th>
+            <th>Šuplíky</th>
+            <th>Bílá výhoda</th>
+            <th>Dostupnost</th>
+            <th>Poznámky</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              <td>k07_nabytek_market_bila</td>
+              <td>Šatní skříň SS-90 zrcadlo Bílá</td>
+              <td>Nabytek-market.cz</td>
+              <td>5539 Kč</td>
+              <td>90</td>
+              <td>180</td>
+              <td>50</td>
+              <td>Bílá</td>
+              <td>Ano</td>
+              <td>2</td>
+              <td>Ano</td>
+              <td>1-2 týdny</td>
+              <td>Stránka zároveň uvádí status &#x27;Rychlé dodání&#x27;.</td>
+            </tr>
+            
+            <tr>
+              <td>k01_reference_dobresny_bila</td>
+              <td>Šatní skříň s otočnými dveřmi a zrcadlem 90 cm bílá</td>
+              <td>Dobrésny.cz</td>
+              <td>11250 Kč</td>
+              <td>90</td>
+              <td>180</td>
+              <td>50</td>
+              <td>Bílá</td>
+              <td>Ano</td>
+              <td>2</td>
+              <td>Ano</td>
+              <td>Na cestě od dodavatele</td>
+              <td>Hloubka se na stránce liší: tabulka parametrů uvádí 50 cm, textový popis 51 cm.</td>
+            </tr>
+            
+            <tr>
+              <td>k02_dobresny_bila_seda</td>
+              <td>Šatní skříň s otočnými dveřmi a zrcadlem 90cm bílá / šedá</td>
+              <td>Dobrésny.cz</td>
+              <td>11510 Kč</td>
+              <td>90</td>
+              <td>180</td>
+              <td>50</td>
+              <td>bílá/šedá</td>
+              <td>Ano</td>
+              <td>2</td>
+              <td>Ano</td>
+              <td>Na cestě od dodavatele</td>
+              <td>Hloubka se liší podle zdroje: tabulka 50 cm, text 51 cm.</td>
+            </tr>
+            
+            <tr>
+              <td>k03_dobresny_dub_artisan_bila</td>
+              <td>Šatní skříň s otočnými dveřmi a zrcadlem 90cm dub artisan / bílá</td>
+              <td>Dobrésny.cz</td>
+              <td>11510 Kč</td>
+              <td>90</td>
+              <td>180</td>
+              <td>50</td>
+              <td>dub artisan/bílá</td>
+              <td>Ano</td>
+              <td>2</td>
+              <td>Ano</td>
+              <td>Na cestě od dodavatele</td>
+              <td>Hloubka se liší podle zdroje: tabulka 50 cm, text 51 cm.</td>
+            </tr>
+            
+            <tr>
+              <td>k11_sg_bila_wenge</td>
+              <td>Šatní skříň se zrcadly S90 2 dvířka 2 zásuvky bílá/wenge</td>
+              <td>SG nábytek</td>
+              <td>5989 Kč</td>
+              <td>90</td>
+              <td>180</td>
+              <td>51</td>
+              <td>bílá/wenge</td>
+              <td>Ano</td>
+              <td>2</td>
+              <td>Ano</td>
+              <td>Obvykle skladem</td>
+              <td>Doručíme do 3. 4. 2026</td>
+            </tr>
+            
+            <tr>
+              <td>k09_sg_bila</td>
+              <td>Šatní skříň se zrcadly S90 2 dvířka 2 zásuvky bílá</td>
+              <td>SG nábytek</td>
+              <td>6129 Kč</td>
+              <td>90</td>
+              <td>180</td>
+              <td>51</td>
+              <td>bílá</td>
+              <td>Ano</td>
+              <td>2</td>
+              <td>Ano</td>
+              <td>Obvykle skladem</td>
+              <td>Doručíme do 3. 4. 2026</td>
+            </tr>
+            
+            <tr>
+              <td>k10_sg_bila_dub_sonoma</td>
+              <td>Šatní skříň se zrcadly S90 2 dvířka 2 zásuvky bílá/dub sonoma</td>
+              <td>SG nábytek</td>
+              <td>6229 Kč</td>
+              <td>90</td>
+              <td>180</td>
+              <td>51</td>
+              <td>bílá/dub sonoma</td>
+              <td>Ano</td>
+              <td>2</td>
+              <td>Ano</td>
+              <td>Obvykle skladem</td>
+              <td>Doručíme do 3. 4. 2026</td>
+            </tr>
+            
+            <tr>
+              <td>k08_salmax_bezova</td>
+              <td>Šatní skříň SS-90 se zrcadlem - béžová</td>
+              <td>Salmax.cz</td>
+              <td>6209 Kč</td>
+              <td>90</td>
+              <td>180</td>
+              <td>50</td>
+              <td>Béžová</td>
+              <td>Ano</td>
+              <td>2</td>
+              <td>Ne</td>
+              <td>Do 2 týdnů</td>
+              <td>Na stránce jsou dvě ceny: nahoře 6209 Kč, v detailním výpisu 6479 Kč.</td>
+            </tr>
+            
+            <tr>
+              <td>k04_dobresny_dub_artisan</td>
+              <td>Šatní skříň s otočnými dveřmi a zrcadlem 90cm dub artisan</td>
+              <td>Dobrésny.cz</td>
+              <td>11250 Kč</td>
+              <td>90</td>
+              <td>180</td>
+              <td>50</td>
+              <td>Dub</td>
+              <td>Ano</td>
+              <td>2</td>
+              <td>Ne</td>
+              <td>Na cestě od dodavatele</td>
+              <td>Hloubka se liší podle zdroje: tabulka 50 cm, text 51 cm.</td>
+            </tr>
+            
+            <tr>
+              <td>k05_dobresny_sonoma</td>
+              <td>Šatní skříň s otočnými dveřmi a zrcadlem 90cm sonoma</td>
+              <td>Dobrésny.cz</td>
+              <td>11250 Kč</td>
+              <td>90</td>
+              <td>180</td>
+              <td>50</td>
+              <td>Dub sonoma</td>
+              <td>Ano</td>
+              <td>2</td>
+              <td>Ne</td>
+              <td>Na cestě od dodavatele</td>
+              <td>Hloubka se liší podle zdroje: tabulka 50 cm, text 51 cm.</td>
+            </tr>
+            
+            <tr>
+              <td>k06_dobresny_wenge_sonoma</td>
+              <td>Šatní skříň s otočnými dveřmi a zrcadlem 90 cm wenge / sonoma</td>
+              <td>Dobrésny.cz</td>
+              <td>11510 Kč</td>
+              <td>90</td>
+              <td>180</td>
+              <td>51</td>
+              <td>wenge/dub sonoma</td>
+              <td>Ano</td>
+              <td>2</td>
+              <td>Ne</td>
+              <td>Na cestě od dodavatele</td>
+              <td></td>
+            </tr>
+            
+        </tbody>
+      </table>
+    </div>
+    <p class="footnote">Poznámka: u části variant jde o stejnou konstrukční rodinu skříně v jiných dekorech a z různých e-shopů. To je pro rodinné rozhodování užitečné, protože uvidíte rozdíl v ceně, dostupnosti a vzhledu při skoro stejných rozměrech.</p>
+  </div>
+</body>
+</html>

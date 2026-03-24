@@ -1,0 +1,34 @@
+{
+  "downloaded_at": "2026-03-24",
+  "store": "Salmax.cz",
+  "source_url": "https://www.salmax.cz/p/satni-skrin-ss-90-se-zrcadlem-bezova/",
+  "name": "Šatní skříň SS-90 se zrcadlem - béžová",
+  "brand": "TOP Nábytek",
+  "part_number": null,
+  "ean": "5904507209070",
+  "price_czk": 6209,
+  "availability": "Do 2 týdnů",
+  "dimensions_cm": {
+    "width": 90,
+    "height": 180,
+    "depth": 50,
+    "depth_note": null
+  },
+  "color": "Béžová",
+  "mirror": true,
+  "drawer_count": 2,
+  "door_count": 2,
+  "image_url": "https://www.salmax.cz/wp-content/uploads/2025/04/PRODUCT1-6661.jpg",
+  "features": [
+    "TIP-ON otevírání",
+    "snadná montáž",
+    "hladké boky"
+  ],
+  "description_excerpt": "Prohlédněte si produkt Šatní skříň SS-90 se zrcadlem - béžová od výrobce TOP Nábytek za cenu 6209 Kč.",
+  "white_preferred": false,
+  "notes": [
+    "Na stránce jsou dvě ceny: nahoře 6209 Kč, v detailním výpisu 6479 Kč."
+  ],
+  "id": "k08_salmax_bezova",
+  "folder": "/Users/minovak/Code/CodexSkrin/nela_pruzkum/kandidati/k08_nabytek_market_ss90_bila"
+}

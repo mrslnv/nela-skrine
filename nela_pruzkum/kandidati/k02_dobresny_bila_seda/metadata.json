@@ -1,0 +1,37 @@
+{
+  "downloaded_at": "2026-03-24",
+  "store": "Dobrésny.cz",
+  "source_url": "https://www.dobresny.cz/detail/skrine/skrine-s-otocnymi-dvermi/satni-skrin-s-otocnymi-dvermi-a-zrcadlem-90cm-bila-seda.html",
+  "name": "Šatní skříň s otočnými dveřmi a zrcadlem 90cm bílá / šedá",
+  "brand": "DobreSNY",
+  "part_number": "XY57854",
+  "ean": "5901752851146",
+  "price_czk": 11510,
+  "price_without_vat_czk": 9512,
+  "lowest_price_last_30_days_czk": 11510,
+  "availability": "Na cestě od dodavatele",
+  "dimensions_cm": {
+    "width": 90,
+    "height": 180,
+    "depth": 50,
+    "depth_note": "Textový popis uvádí 51 cm."
+  },
+  "color": "bílá/šedá",
+  "mirror": true,
+  "drawer_count": 2,
+  "door_count": 2,
+  "image_url": "https://cdn.dobresny.cz/images/produkty/3/22351/export_8270.jpg?format=webp",
+  "features": [
+    "otočné dveře",
+    "zrcadlo",
+    "2 zásuvky",
+    "vlastní montáž"
+  ],
+  "description_excerpt": "Kategorie Skříně do předsíně Skříně s otočnými dveřmi Skříně se zrcadlem Šířka skříně 90cm Výška skříně 180cm Hloubka skříně 50cm Rozměr Barevné provedení Bílá / Šedá Zrcadlo Ano ŠATNÍ SKŘÍŇ O ŠÍŘCE 90 cm 2 DVEŘMI 2 ZÁSUVKAMI A ZRCADLEM Vyrobeno z 16mm laminované desky odolné proti oděru. Hrany jsou pokryty ABS hranami Rozměry: Šířka - 90cm Výška - 180cm Hloubka - 51cm Barevné provedení: bílá / šedá Prezentované šatní skříně jsou kombinací funkčnosti a moderního designu. Jsou vyrobeny z kvalitní",
+  "white_preferred": true,
+  "notes": [
+    "Hloubka se liší podle zdroje: tabulka 50 cm, text 51 cm."
+  ],
+  "id": "k02_dobresny_bila_seda",
+  "folder": "/Users/minovak/Code/CodexSkrin/nela_pruzkum/kandidati/k02_dobresny_bila_seda"
+}

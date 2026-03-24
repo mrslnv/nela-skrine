@@ -1,0 +1,35 @@
+{
+  "downloaded_at": "2026-03-24",
+  "store": "Nabytek-market.cz",
+  "source_url": "https://www.nabytek-market.cz/satni-skrin-ss-90-zrcadlo-bila-detail",
+  "name": "Šatní skříň SS-90 zrcadlo Bílá",
+  "brand": "TOP E-SHOP",
+  "part_number": "CN-05-0176-01",
+  "ean": null,
+  "price_czk": 5539,
+  "availability": "1-2 týdny",
+  "dimensions_cm": {
+    "width": 90,
+    "height": 180,
+    "depth": 50,
+    "depth_note": null
+  },
+  "color": "Bílá",
+  "mirror": true,
+  "drawer_count": 2,
+  "door_count": 2,
+  "image_url": "https://www.nabytek-market.cz/images/eshop/product/CN-05-/satni-skrin-ss-90-zrcadlo-bila-0176-01_8097_66320.jpg",
+  "features": [
+    "TIP-ON otevírání",
+    "2 velká zrcadla",
+    "4 police",
+    "ABS hrany"
+  ],
+  "description_excerpt": "BARVA: BÍLÁ\\r\\n\\r\\n2 velká zrcadla\\r\\nDveře šatní skříně systému TIP -ON - otevírají se po jemném zatlačení vpředu pomocí mechanické otvírací pomůcky.\\r\\nPolice lze namontovat na levou nebo pravou stranu.\\r\\nOkraje jsou pokryty ABS hranou\\r\\nMísto k zavěšení oblečení\\r\\n4 police\\r\\n2 zásuvky\\r\\nLehká jednoduchá forma\\r\\nMinimalistický design\\r\\n\\r\\nŠatní skříň se zrcadly SS-90 je praktický kus nábytku, který si najde své místo jak v ložnici, kde máme šatní skříně, ale také v kanceláři nebo studi",
+  "white_preferred": true,
+  "notes": [
+    "Stránka zároveň uvádí status 'Rychlé dodání'."
+  ],
+  "id": "k07_nabytek_market_bila",
+  "folder": "/Users/minovak/Code/CodexSkrin/nela_pruzkum/kandidati/k07_fuf_star_bila"
+}

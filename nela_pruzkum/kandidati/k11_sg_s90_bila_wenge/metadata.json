@@ -1,0 +1,35 @@
+{
+  "downloaded_at": "2026-03-24",
+  "store": "SG nábytek",
+  "source_url": "https://www.sg-nabytek.cz/cs/satni-skrin-se-zrcadly-s90-2-dvirka-2-zasuvky-bila-wenge",
+  "name": "Šatní skříň se zrcadly S90 2 dvířka 2 zásuvky bílá/wenge",
+  "brand": "Akord",
+  "part_number": "084-0934",
+  "ean": null,
+  "price_czk": 5989,
+  "availability": "Obvykle skladem",
+  "dimensions_cm": {
+    "width": 90,
+    "height": 180,
+    "depth": 51,
+    "depth_note": null
+  },
+  "color": "bílá/wenge",
+  "mirror": true,
+  "drawer_count": 2,
+  "door_count": 2,
+  "image_url": "https://www.sg-nabytek.cz/variant/eshop/motive-meta/edeeshop/product/hlavni-motiv/084-0934/szafa-s-90cm-2-drzwi-2-szuflady-2-lustra-biala-wenge.jpg",
+  "features": [
+    "otočné dveře",
+    "výsuvné prvky",
+    "zrcadlo",
+    "2 zásuvky"
+  ],
+  "description_excerpt": "",
+  "white_preferred": true,
+  "notes": [
+    "Doručíme do 3. 4. 2026"
+  ],
+  "id": "k11_sg_bila_wenge",
+  "folder": "/Users/minovak/Code/CodexSkrin/nela_pruzkum/kandidati/k11_sg_s90_bila_wenge"
+}
