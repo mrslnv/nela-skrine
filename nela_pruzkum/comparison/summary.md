@@ -15,6 +15,8 @@
 - Hloubka je u většiny kandidátů `50 až 51 cm`.
 - Většina kandidátů splňuje požadavek na zrcadlo i šuplíky.
 - Velká část nalezených variant je stejná nebo velmi podobná konstrukční rodina `S90 / SS-90`, liší se hlavně dekorem, e-shopem a cenou.
+- Vizualizace v pokoji:
+  - [skrin-vizualizace-2.png](/Users/minovak/Code/CodexSkrin/nela_pruzkum/skrin-vizualizace-2.png)
 
 ## Na co pozor
 
@@ -24,6 +26,7 @@
 ## Doporučený další krok
 
 - Pro rodinnou diskuzi otevřít `comparison.html`.
+- Pro rychlý pohled na umístění v pokoji otevřít `../skrin-vizualizace-2.png`.
 - Pak si vytáhnout shortlist 2 až 3 kusů podle kombinace:
   - cena
   - barva
